@@ -23,7 +23,14 @@ export default function Layout({
 
   return (
     <div>
-      {hasHeader ? header ? header : <div>default header</div> : null}
+      {hasHeader || header
+        ? header || (
+            <div className="bg-red-400 max-w-xl top-0 border-b px-10 w-full h-12 fixed flex items-center justify-center font-medium text-lg text-gray-800">
+              {backBtn ? <></> : null}
+              {title ? <span>{title}</span> : null}
+            </div>
+          )
+        : null}
       <div
         className={cls(
           hasHeader ? (header ? "pt-20" : "pt-12") : "",
